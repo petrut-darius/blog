@@ -7,4 +7,23 @@
  * depending on specificity.
  *
  * Consider organizing styles into separate files for maintainability.
+ *= require boostrap
  */
+
+body{
+  background-color: lightgray;
+}
+
+#home-container{
+  margin-top: 25px;
+}
+
+footer{
+  background-color: black;
+  position: fixed;
+  height: 2rem;
+  bottom: 0;
+  width: 100%;
+}
+
+
