@@ -10,7 +10,9 @@
   <tbody>
     <% obj.each do |article| %>
       <tr>
-        <td><%= article.user.username if article.user%></td>
+        <% if article.user %>
+          <td><%= link_to article.user.username, user_path(article.user) %></td>
+        <% end %>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td><%= link_to "Delete", article_path(article), data: { turbo_method: :delete } %></td><%# dupa article pune de la sine .id%>
