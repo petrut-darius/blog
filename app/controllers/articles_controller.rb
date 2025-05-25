@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   def create
     # aici o fost ceva erroare ca gen nu ma ducea la un url daca l-am scris de mana doar daca i-am dat paste de pe git-u lui
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:notice] = "Article was created succesfully"# un helper care e cam ca un hash views/layouts/application
       redirect_to @article
