@@ -1,4 +1,12 @@
 <h1>Articles listing page</h1>
+
+<div class="digg_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
 <%= render "article", obj: @articles%>
 <br><br>
 <%= link_to "Create new article", new_article_path%>
+<br><br>
+<div class="digg_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
