@@ -17,12 +17,26 @@
               Dropdown
             </a>
             <ul class="dropdown-menu">
+              <% if logged_in? %>
               <li><a class="dropdown-item" href="#"><%= link_to "Create new article" , new_article_path %></a></li>
+              <% end %>
               <li><a class="dropdown-item" href="#"><%= link_to "Articles", articles_path%></a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= "(Admin)" if current_user.admin? %> Profile <%= current_user.username %>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><%= link_to "View your profile" , user_path(current_user) %></a></li>
+              <li><a class="dropdown-item" href="#"><%= link_to "Edit your profile", edit_user_path(current_user) %></a></li>
+              <li><a class="dropdown-item" href="#"><%= link_to "Delete profile", user_path(current_user), data: { turbo_method: :delete } %></a></li>
+            </ul>
+          </li>
+          <% end %>
           <% if logged_in? %>
             <li class="nav-item">
               <%= link_to "Log Out!", logout_path, method: :delete, class: "nav-link active", "aria-current": "page" %>

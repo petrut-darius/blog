@@ -4,6 +4,8 @@
 <p>Description: <%= @article.description =%></p>
 <p>By: <%= @article.user.username if @article.user%></p>
 <%= link_to gravatar_for(@article.user), user_path(@article.user)%>
-<%= link_to "Edit", edit_article_path(@article) %> 
-<%= button_to "Delete this article", @article, method: :delete, form: { data: { turbo_confirm: 'custom message' }} %> 
+<% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+  <%= link_to "Edit", edit_article_path(@article) %> 
+  <%= button_to "Delete this article", @article, method: :delete, form: { data: { turbo_confirm: 'custom message' }} %> 
+<% end %>
 <%= link_to "Return", articles_path%>
